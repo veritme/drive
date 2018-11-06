@@ -10,7 +10,7 @@ CREATE TABLE active_storage_attachments (
   blob_id bigint NOT NULL,
   created_at datetime NOT NULL,
   PRIMARY KEY (id),
-  UNIQUE KEY index_active_storage_attachments_uniqueness (record_type,record_id,name,blob_id)
+  UNIQUE index_active_storage_attachments_uniqueness (record_type,record_id,name,blob_id)
 ) ENGINE=InnoDB SERIAL=118 DEFAULT CHARSET=utf8;
 
 KEY index_active_storage_attachments_on_blob_id (blob_id);
@@ -41,7 +41,7 @@ CREATE TABLE active_storage_blobs (
   checksum varchar(255) NOT NULL,
   created_at datetime NOT NULL,
   PRIMARY KEY (id),
-  UNIQUE KEY index_active_storage_blobs_on_key (key)
+  UNIQUE index_active_storage_blobs_on_key (key)
 ) ENGINE=InnoDB SERIAL=118 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -132,7 +132,7 @@ CREATE TABLE friendly_id_slugs (
   scope varchar(255) DEFAULT NULL,
   created_at datetime DEFAULT NULL,
   PRIMARY KEY (id),
-  UNIQUE KEY index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope (slug(70),sluggable_type,scope(70)),
+  UNIQUE index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope (slug(70),sluggable_type,scope(70)),
   KEY index_friendly_id_slugs_on_sluggable_id (sluggable_id),
   KEY index_friendly_id_slugs_on_slug_and_sluggable_type (slug(140),sluggable_type),
   KEY index_friendly_id_slugs_on_sluggable_type (sluggable_type)
@@ -310,7 +310,7 @@ CREATE TABLE taggings (
   context varchar(128) DEFAULT NULL,
   created_at datetime DEFAULT NULL,
   PRIMARY KEY (id),
-  UNIQUE KEY taggings_idx (tag_id,taggable_id,taggable_type,context,tagger_id,tagger_type)
+  UNIQUE taggings_idx (tag_id,taggable_id,taggable_type,context,tagger_id,tagger_type)
 ) ENGINE=InnoDB SERIAL=10 DEFAULT CHARSET=utf8;
 
 KEY index_taggings_on_taggable_id_and_taggable_type_and_context (taggable_id,taggable_type,context);
@@ -343,7 +343,7 @@ CREATE TABLE tags (
   name varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   taggings_count int(11) DEFAULT 0,
   PRIMARY KEY (id),
-  UNIQUE KEY index_tags_on_name (name)
+  UNIQUE index_tags_on_name (name)
 ) ENGINE=InnoDB SERIAL=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -418,8 +418,8 @@ CREATE TABLE users (
   updated_at datetime NOT NULL,
   admin tinyint(1) DEFAULT 0,
   PRIMARY KEY (id),
-  UNIQUE KEY index_users_on_email (email),
-  UNIQUE KEY index_users_on_reset_password_token (reset_password_token)
+  UNIQUE index_users_on_email (email),
+  UNIQUE index_users_on_reset_password_token (reset_password_token)
 ) ENGINE=InnoDB SERIAL=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
