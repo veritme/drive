@@ -20,7 +20,6 @@
 --
 
 
-USE `kakuga_db`;
 
 --
 -- Table structure for table `active_storage_attachments`
