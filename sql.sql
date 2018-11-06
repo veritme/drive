@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS active_storage_attachments;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE active_storage_attachments (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   name varchar(255) NOT NULL,
   record_type varchar(255) NOT NULL,
   record_id bigint NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE active_storage_attachments (
   created_at datetime NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY index_active_storage_attachments_uniqueness (record_type,record_id,name,blob_id)
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=118 DEFAULT CHARSET=utf8;
 
 KEY index_active_storage_attachments_on_blob_id (blob_id);
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -32,7 +32,7 @@ DROP TABLE IF EXISTS active_storage_blobs;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE active_storage_blobs (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   key varchar(255) NOT NULL,
   filename varchar(255) NOT NULL,
   content_type varchar(255) DEFAULT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE active_storage_blobs (
   created_at datetime NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY index_active_storage_blobs_on_key (key)
-) ENGINE=InnoDB AUTO_INCREMENT=118 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=118 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 -- 
@@ -85,7 +85,7 @@ DROP TABLE IF EXISTS episodes;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE episodes (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   name text,
   description text,
   number int(11) DEFAULT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE episodes (
   CONSTRAINT fk_rails_14b1666c11 FOREIGN KEY (season_id) REFERENCES seasons (id),
   CONSTRAINT fk_rails_5faeed9e3f FOREIGN KEY (title_id) REFERENCES titles (id),
   CONSTRAINT fk_rails_800bf40a90 FOREIGN KEY (user_id) REFERENCES users (id)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=35 DEFAULT CHARSET=utf8;
 
 KEY index_episodes_on_user_id (user_id);
 KEY index_episodes_on_title_id (title_id);
@@ -125,7 +125,7 @@ DROP TABLE IF EXISTS friendly_id_slugs;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE friendly_id_slugs (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL SERIAL,
   slug varchar(255) NOT NULL,
   sluggable_id int(11) NOT NULL,
   sluggable_type varchar(50) DEFAULT NULL,
@@ -154,7 +154,7 @@ DROP TABLE IF EXISTS lists;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE lists (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   title_id bigint DEFAULT NULL,
   user_id bigint DEFAULT NULL,
   created_at datetime NOT NULL,
@@ -163,7 +163,7 @@ CREATE TABLE lists (
  ,
   CONSTRAINT fk_rails_d6cf4279f7 FOREIGN KEY (user_id) REFERENCES users (id),
   CONSTRAINT fk_rails_ea5f4a19fe FOREIGN KEY (title_id) REFERENCES titles (id)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=6 DEFAULT CHARSET=utf8;
 
 KEY index_lists_on_title_id (title_id);
 KEY index_lists_on_user_id (user_id);
@@ -185,7 +185,7 @@ DROP TABLE IF EXISTS options;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE options (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   name text,
   user_id bigint DEFAULT NULL,
   episode_id bigint DEFAULT NULL,
@@ -196,7 +196,7 @@ CREATE TABLE options (
  ,
   CONSTRAINT fk_rails_1f4bd92e8f FOREIGN KEY (user_id) REFERENCES users (id),
   CONSTRAINT fk_rails_e5b611e518 FOREIGN KEY (episode_id) REFERENCES episodes (id)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=35 DEFAULT CHARSET=utf8;
 
 KEY index_options_on_user_id (user_id);
 KEY index_options_on_episode_id (episode_id);
@@ -239,7 +239,7 @@ DROP TABLE IF EXISTS seasons;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE seasons (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   name text,
   number int(11) DEFAULT NULL,
   user_id bigint DEFAULT NULL,
@@ -250,7 +250,7 @@ CREATE TABLE seasons (
  ,
   CONSTRAINT fk_rails_26cf28f4af FOREIGN KEY (user_id) REFERENCES users (id),
   CONSTRAINT fk_rails_e0c8d5034c FOREIGN KEY (title_id) REFERENCES titles (id)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=4 DEFAULT CHARSET=utf8;
 
 KEY index_seasons_on_user_id (user_id);
 KEY index_seasons_on_title_id (title_id);
@@ -272,7 +272,7 @@ DROP TABLE IF EXISTS subtitles;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE subtitles (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   episode_id bigint DEFAULT NULL,
   lang int(11) DEFAULT NULL,
   created_at datetime NOT NULL,
@@ -280,7 +280,7 @@ CREATE TABLE subtitles (
   PRIMARY KEY (id)
  ,
   CONSTRAINT fk_rails_797ece2ee4 FOREIGN KEY (episode_id) REFERENCES episodes (id)
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=87 DEFAULT CHARSET=utf8;
 
 KEY index_subtitles_on_episode_id (episode_id);
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -301,7 +301,7 @@ DROP TABLE IF EXISTS taggings;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE taggings (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL SERIAL,
   tag_id int(11) DEFAULT NULL,
   taggable_type varchar(255) DEFAULT NULL,
   taggable_id int(11) DEFAULT NULL,
@@ -311,7 +311,7 @@ CREATE TABLE taggings (
   created_at datetime DEFAULT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY taggings_idx (tag_id,taggable_id,taggable_type,context,tagger_id,tagger_type)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=10 DEFAULT CHARSET=utf8;
 
 KEY index_taggings_on_taggable_id_and_taggable_type_and_context (taggable_id,taggable_type,context);
 KEY index_taggings_on_tag_id (tag_id);
@@ -339,12 +339,12 @@ DROP TABLE IF EXISTS tags;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE tags (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL SERIAL,
   name varchar(255) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   taggings_count int(11) DEFAULT 0,
   PRIMARY KEY (id),
   UNIQUE KEY index_tags_on_name (name)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 -- 
@@ -363,7 +363,7 @@ DROP TABLE IF EXISTS titles;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE titles (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   name text,
   synopsis text,
   alternative text,
@@ -387,7 +387,7 @@ CREATE TABLE titles (
   PRIMARY KEY (id)
  ,
   CONSTRAINT fk_rails_4926f23134 FOREIGN KEY (user_id) REFERENCES users (id)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=5 DEFAULT CHARSET=utf8;
 
 KEY index_titles_on_user_id (user_id);
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -408,7 +408,7 @@ DROP TABLE IF EXISTS users;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE users (
-  id bigint NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL SERIAL,
   email varchar(255) NOT NULL DEFAULT ,
   encrypted_password varchar(255) NOT NULL DEFAULT ,
   reset_password_token varchar(255) DEFAULT NULL,
@@ -420,7 +420,7 @@ CREATE TABLE users (
   PRIMARY KEY (id),
   UNIQUE KEY index_users_on_email (email),
   UNIQUE KEY index_users_on_reset_password_token (reset_password_token)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 -- 
@@ -439,7 +439,7 @@ DROP TABLE IF EXISTS votes;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE votes (
-  id int(11) NOT NULL AUTO_INCREMENT,
+  id int(11) NOT NULL SERIAL,
   votable_type varchar(255) DEFAULT NULL,
   votable_id int(11) DEFAULT NULL,
   voter_type varchar(255) DEFAULT NULL,
@@ -450,7 +450,7 @@ CREATE TABLE votes (
   created_at datetime DEFAULT NULL,
   updated_at datetime DEFAULT NULL,
   PRIMARY KEY (id)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB SERIAL=8 DEFAULT CHARSET=utf8;
 
 KEY index_votes_on_voter_id_and_voter_type_and_vote_scope (voter_id,voter_type,vote_scope);
 KEY index_votes_on_votable_id_and_votable_type_and_vote_scope (votable_id,votable_type,vote_scope);
