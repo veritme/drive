@@ -3,11 +3,11 @@ DROP TABLE IF EXISTS active_storage_attachments;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE active_storage_attachments (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
   record_type varchar(255) NOT NULL,
-  record_id bigint(20) NOT NULL,
-  blob_id bigint(20) NOT NULL,
+  record_id bigint NOT NULL,
+  blob_id bigint NOT NULL,
   created_at datetime NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY index_active_storage_attachments_uniqueness (record_type,record_id,name,blob_id)
@@ -32,12 +32,12 @@ DROP TABLE IF EXISTS active_storage_blobs;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE active_storage_blobs (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL AUTO_INCREMENT,
   key varchar(255) NOT NULL,
   filename varchar(255) NOT NULL,
   content_type varchar(255) DEFAULT NULL,
   metadata text,
-  byte_size bigint(20) NOT NULL,
+  byte_size bigint NOT NULL,
   checksum varchar(255) NOT NULL,
   created_at datetime NOT NULL,
   PRIMARY KEY (id),
@@ -85,13 +85,13 @@ DROP TABLE IF EXISTS episodes;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE episodes (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL AUTO_INCREMENT,
   name text,
   description text,
   number int(11) DEFAULT NULL,
-  user_id bigint(20) DEFAULT NULL,
-  title_id bigint(20) DEFAULT NULL,
-  season_id bigint(20) DEFAULT NULL,
+  user_id bigint DEFAULT NULL,
+  title_id bigint DEFAULT NULL,
+  season_id bigint DEFAULT NULL,
   created_at datetime NOT NULL,
   updated_at datetime NOT NULL,
   start int(11) DEFAULT NULL,
@@ -154,9 +154,9 @@ DROP TABLE IF EXISTS lists;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE lists (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
-  title_id bigint(20) DEFAULT NULL,
-  user_id bigint(20) DEFAULT NULL,
+  id bigint NOT NULL AUTO_INCREMENT,
+  title_id bigint DEFAULT NULL,
+  user_id bigint DEFAULT NULL,
   created_at datetime NOT NULL,
   updated_at datetime NOT NULL,
   PRIMARY KEY (id)
@@ -185,10 +185,10 @@ DROP TABLE IF EXISTS options;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE options (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL AUTO_INCREMENT,
   name text,
-  user_id bigint(20) DEFAULT NULL,
-  episode_id bigint(20) DEFAULT NULL,
+  user_id bigint DEFAULT NULL,
+  episode_id bigint DEFAULT NULL,
   embed text,
   created_at datetime NOT NULL,
   updated_at datetime NOT NULL,
@@ -239,11 +239,11 @@ DROP TABLE IF EXISTS seasons;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE seasons (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL AUTO_INCREMENT,
   name text,
   number int(11) DEFAULT NULL,
-  user_id bigint(20) DEFAULT NULL,
-  title_id bigint(20) DEFAULT NULL,
+  user_id bigint DEFAULT NULL,
+  title_id bigint DEFAULT NULL,
   created_at datetime NOT NULL,
   updated_at datetime NOT NULL,
   PRIMARY KEY (id)
@@ -272,8 +272,8 @@ DROP TABLE IF EXISTS subtitles;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE subtitles (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
-  episode_id bigint(20) DEFAULT NULL,
+  id bigint NOT NULL AUTO_INCREMENT,
+  episode_id bigint DEFAULT NULL,
   lang int(11) DEFAULT NULL,
   created_at datetime NOT NULL,
   updated_at datetime NOT NULL,
@@ -363,7 +363,7 @@ DROP TABLE IF EXISTS titles;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE titles (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL AUTO_INCREMENT,
   name text,
   synopsis text,
   alternative text,
@@ -374,7 +374,7 @@ CREATE TABLE titles (
   time int(11) DEFAULT NULL,
   created_at datetime NOT NULL,
   updated_at datetime NOT NULL,
-  user_id bigint(20) DEFAULT NULL,
+  user_id bigint DEFAULT NULL,
   state int(11) DEFAULT NULL,
   slug varchar(255) DEFAULT NULL,
   cached_votes_total int(11) DEFAULT 0,
@@ -408,7 +408,7 @@ DROP TABLE IF EXISTS users;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE users (
-  id bigint(20) NOT NULL AUTO_INCREMENT,
+  id bigint NOT NULL AUTO_INCREMENT,
   email varchar(255) NOT NULL DEFAULT ,
   encrypted_password varchar(255) NOT NULL DEFAULT ,
   reset_password_token varchar(255) DEFAULT NULL,
