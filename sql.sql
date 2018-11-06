@@ -19,7 +19,7 @@
 -- Current Database: `kakuga_db`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `kakuga_db` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `kakuga-database` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE `kakuga_db`;
 
