@@ -21,4 +21,4 @@ INSERT INTO taggings VALUES (1,1,'Title',1,NULL,NULL,'tags','2018-11-03 03:09:18
 INSERT INTO tags VALUES (1,'Acción',1),(2,'Aventura',1),(3,'Fantasía',2),(4,'Ciencia ficción',1),(5,'Corea del Sur',1),(6,'Romance',1),(7,'Melodrama',1),(8,'Ficción',1);
 
 
-INSERT INTO votes VALUES (3,'Title',1,'User',1,1,NULL,1,'2018-11-02 22:02:16','2018-11-02 22:02:16'),(4,'Title',3,'User',1,1,NULL,1,'2018-11-03 20:45:56','2018-11-03 20:45:56'),(5,'Title',4,'User',2,1,NULL,1,'2018-11-05 17:54:01','2018-11-05 17:54:49'),(7,'Title',4,'User',1,1,NULL,1,'2018-11-05 17:55:01','2018-11-05 17:55:01');
+INSERT INTO votes VALUES (3,'Title',1,'User',1,true,NULL,1,'2018-11-02 22:02:16','2018-11-02 22:02:16'),(4,'Title',3,'User',1,true,NULL,1,'2018-11-03 20:45:56','2018-11-03 20:45:56'),(5,'Title',4,'User',2,true,NULL,1,'2018-11-05 17:54:01','2018-11-05 17:54:49'),(7,'Title',4,'User',1,true,NULL,1,'2018-11-05 17:55:01','2018-11-05 17:55:01');
